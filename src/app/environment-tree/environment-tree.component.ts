@@ -40,14 +40,12 @@ export class EnvironmentTreeComponent{
 
   CreateEnvironment(node: MyTreeNode, name:string){
     this.environmentService.CreateEnvironment(node, name).subscribe(data => {
-      console.log(data)
-      console.log(this.environmentService.dataChange.value)
       var parentNode = node.parent
       if (parentNode == null){
         console.log("something went wrong")
       } else {
         parentNode.children.pop()
-        parentNode.children.push({data:{id:data.environmentID, name:data.environmentName},name: data.environmentName,id: data.environmentID,depth:node.depth + 1, parentId: node.id,children: [], hasChild:false, isDevice:false,isInput:false, parent:null})
+        parentNode.children.push({data:{id:data.environmentID, name:data.environmentName},name: data.environmentName,id: data.environmentID,depth:node.depth + 1, parentId: node.id,children: [], hasChild:false, isDevice:false,isInput:false, parent:parentNode})
         this.dataSource.data = [];
         this.dataSource.data = this.environmentService.dataChange.value
       }
@@ -56,7 +54,7 @@ export class EnvironmentTreeComponent{
 
   DeleteEnvironment(node: MyTreeNode){
     var sub = this.environmentService.DeleteEnv(node).subscribe(data => {
-      node.parent?.children.slice(node.parent?.children.indexOf(node),1)
+      node.parent?.children.splice(node.parent?.children.indexOf(node),1)
       this.dataSource.data = [];
       this.dataSource.data = this.environmentService.dataChange.value
       sub.unsubscribe()

@@ -11,7 +11,7 @@ export interface Config {
 
 @Injectable()
 export class ConfigService {
-  configUrl = 'http://192.168.10.164:5000/api/User/test'
+  configUrl = 'http://51.174.84.85:5000/api/User/test'
 
   constructor(private http: HttpClient) { }
   totalAngularPackages:any;
@@ -20,7 +20,7 @@ export class ConfigService {
   y$:number[] = []
 
   getConfig(){
-    const response = this.http.get('http://192.168.10.164:5000/api/User/test',{responseType:'text'});
+    const response = this.http.get('http://51.174.84.85:5000/api/User/test',{responseType:'text'});
     response.subscribe(data => {
       const list = data.split("\n");
       list.forEach( e => {

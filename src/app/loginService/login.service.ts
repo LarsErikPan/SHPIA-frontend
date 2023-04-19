@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpEvent, HttpResponse, HttpResponseBas
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
-const Url = "http://192.168.10.164:5000/api/"
+const Url = "http://51.174.84.85:5000/api/"
 
 @Injectable({
   providedIn: 'root'

@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { LoginService } from '../loginService/login.service';
 
-const Url = "http://192.168.10.164:5000/api/"
+const Url = "http://51.174.84.85:5000/api/"
 
 
 @Component({

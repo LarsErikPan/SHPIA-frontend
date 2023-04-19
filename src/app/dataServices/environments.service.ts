@@ -97,7 +97,7 @@ export class EnvironmentsService {
 
   DeleteEnv(node:MyTreeNode){
     return (this.http.delete(
-      Url + "Environment/",      
+      Url + "Environment/",
       {headers:{
         'Content-Type': 'application/json',
         Authorization: 'bearer ' + this.token
@@ -125,11 +125,9 @@ export class EnvironmentsService {
 
   getDevs(data:any[])
   {
-    console.log(data)
     data.forEach(d => 
     {
       var e = Math.floor(Math.random()*1000000000);
-      console.log(e)
       this.envArray$.push({name: d.deviceName,data:{id:d.environmentID,name:d.deviceName} ,id:e ,depth:-1, parentId: d.environmentID,children: [], hasChild:false, isDevice:true,isInput:false,parent:null})
     })
   }
