@@ -16,11 +16,15 @@
         </mat-form-field>
         <mat-form-field appearance="fill" >
             <mat-label>Password</mat-label>
-            <input matInput type="password" #Password placeholder="Passowrd">
+            <input matInput type="password" #Password placeholder="Password">
+        </mat-form-field>        
+        <mat-form-field appearance="fill" >
+            <mat-label>Confirm Password</mat-label>
+            <input matInput type="password" #ConfirmPassword placeholder="Password">
         </mat-form-field>
     </div>
     <div style="margin-bottom:5px">
-    <button mat-raised-button color="primary" style="float:right; margin:5px;" (click)="login(Email.value, Password.value)"> Login
+    <button mat-raised-button color="primary" style="float:right; margin:5px;" (click)="register(Email.value, Password.value, ConfirmPassword.value)"> Register
     </button>
     </div>
     <div *ngIf="this.loginErrorMessage != null">

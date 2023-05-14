@@ -5,8 +5,9 @@ import { IActionHandler } from '@circlon/angular-tree-component';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { LoginService } from '../loginService/login.service';
+import { SettingsService } from '../settings/settings.service';
 
-const Url = "http://192.168.10.164:5000/api/"
+const Url = SettingsService.API_ENDPOINT
 
 export interface EnvironmentType {
   parentEnvironmentID: number;
@@ -45,7 +46,6 @@ export class EnvironmentsService {
 
   constructor(private http: HttpClient, private loginService: LoginService) {
     loginService.token$.subscribe(data => {
-      console.log(data)
       if (data != null){
         this.token = data
         this.getStructuredData()
@@ -80,7 +80,7 @@ export class EnvironmentsService {
 
   CreateEnvironment(node:MyTreeNode, name:string)
   {
-    return (this.http.post<CreateEnvironmentResponse>(
+    return (this.http.post<any>(
       Url + 'Environment/',
       {
         "ParentEnvironmentId":(node.parent || {id:0}).id,
@@ -140,7 +140,7 @@ export class EnvironmentsService {
     })
   }
 
-  // Disclamer: this function(listToTree) was partially written by chat GPT-3 on 17/03/2023
+  // Disclamer: this function(listToTree()) was partially written by chat GPT-3 on 17/03/2023
   listToTree(list: any[]): MyTreeNode[] {
     const map: Record<number, MyTreeNode> = {};
     const roots: MyTreeNode[] = [];

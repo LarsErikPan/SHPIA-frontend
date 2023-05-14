@@ -1,4 +1,15 @@
 
+<mat-toolbar color="primary" class="tb">
+  <h2 style="padding-top:15px">Environments</h2>
+  <button mat-icon-button [matMenuTriggerFor] ="menu" style="opacity: 40%;">
+    <mat-icon>
+      more_vert
+    </mat-icon>      
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="addNewPrimaryEnv()">Create environment</button>
+    </mat-menu>
+  </button>
+</mat-toolbar>
 
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
   <!-- This is the tree node template for leaf nodes -->
@@ -16,6 +27,7 @@
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="addNewEnv(node)">Create subenvironment</button>
         <button mat-menu-item (click)="DeleteEnvironment(node)">Delete Environment</button>
+        <button mat-menu-item (click)="openPiWebsite(node)">Configure Devices</button>
       </mat-menu>
     </button>
   </mat-tree-node>
@@ -36,6 +48,7 @@
         <mat-menu #menu="matMenu">
           <button mat-menu-item (click)="addNewEnv(node)">Create subenvironment</button>
           <button mat-menu-item (click)="DeleteEnvironment(node)">Delete Environment</button>
+          <button mat-menu-item (click)="openPiWebsite(node)">Configure Devices</button>
         </mat-menu>
       </button>
     </div>
@@ -67,7 +80,7 @@
       <mat-icon style="padding:15px">
         devices_other
       </mat-icon>
-      {{node.name}}
+        {{node.name}}
       <mat-checkbox (change)="DeviceChecked(node.data, $event.checked)"></mat-checkbox>
     </div>
   </mat-nested-tree-node>

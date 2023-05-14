@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { SettingsService } from '../settings/settings.service';
+
+const Url = SettingsService.API_ENDPOINT
 
 export interface Config {
   x_acceleration: number;
@@ -11,7 +14,6 @@ export interface Config {
 
 @Injectable()
 export class ConfigService {
-  configUrl = 'http://51.174.84.85:5000/api/User/test'
 
   constructor(private http: HttpClient) { }
   totalAngularPackages:any;
@@ -20,7 +22,7 @@ export class ConfigService {
   y$:number[] = []
 
   getConfig(){
-    const response = this.http.get('http://51.174.84.85:5000/api/User/test',{responseType:'text'});
+    const response = this.http.get(Url + 'User/test',{responseType:'text'});
     response.subscribe(data => {
       const list = data.split("\n");
       list.forEach( e => {

@@ -29,6 +29,8 @@ import { LoginWindowComponent } from './login-window/login-window.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+import { PiwebsiteComponent } from "./piWebsite/piwebsite.component";
+import { RegisterWindowComponent } from './register-window/register-window.component'
 
 
 
@@ -45,6 +47,8 @@ PlotlyModule.plotlyjs = PlotlyJS;
     DataToolBarComponent,
     HeaderComponent,
     LoginWindowComponent,
+    PiwebsiteComponent,
+    RegisterWindowComponent,
   ],
   imports: [
     BrowserModule,
