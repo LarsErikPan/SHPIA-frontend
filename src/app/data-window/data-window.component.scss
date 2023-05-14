@@ -1,7 +1,8 @@
 .float-container {
     border:3px solid #fff;
-    padding:10px;
-    height:90svh;
+    padding-top:10px;
+    padding-left:10px;
+    height:calc(90svh - 30px);
 }
 
 .float-child {

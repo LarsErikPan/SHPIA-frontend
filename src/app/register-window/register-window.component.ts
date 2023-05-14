@@ -5,35 +5,35 @@ import { SettingsService } from '../settings/settings.service';
 
 const Url = SettingsService.API_ENDPOINT
 
-
 @Component({
-  selector: 'app-login-window',
-  templateUrl: './login-window.component.html'
+  selector: 'app-register-window',
+  templateUrl: './register-window.component.html',
+  styleUrls: ['./register-window.component.scss']
 })
 
-export class LoginWindowComponent {
+export class RegisterWindowComponent {
+
+  
   public loginErrorMessage: string | null = null;
 
   
-  constructor(public service :LoginService ,public dialogRef: MatDialogRef<LoginWindowComponent>) {
+  constructor(public service :LoginService ,public dialogRef: MatDialogRef<RegisterWindowComponent>) {
     service.loginError$.subscribe(data => {
       this.loginErrorMessage = data
     })
   }
-  public isLoggedIn:boolean = false;
 
-
-  login(email:string, password:string){
-    this.service.token$.subscribe(data => {
+  register(email:string, password:string, confirmPassword:string){
+    this.service.registerMessage$.subscribe(data => {
       if (data){
-        this.isLoggedIn = true
         this.closeDialog()
       }
     })
-    this.service.login(email,password)
+    this.service.register(email,password, confirmPassword)
   }
 
   closeDialog(): void {
     this.dialogRef.close();
   }
 }
+

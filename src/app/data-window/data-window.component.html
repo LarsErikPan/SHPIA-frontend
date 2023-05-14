@@ -1,5 +1,5 @@
 <div class="float-container">
-    <div class="float-child tree">
+    <div class="float-child tree" style="overflow-y: scroll;">
         <app-environment-tree>
             
         </app-environment-tree>
@@ -8,5 +8,11 @@
         <app-data-tool-bar>
 
         </app-data-tool-bar>
+        <div *ngIf="this.piWindowActive" style="height:100%;">
+            <app-piwebsite>
+
+            </app-piwebsite>
+        </div>
+
     </div>
 </div>
