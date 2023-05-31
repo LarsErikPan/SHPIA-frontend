@@ -5,6 +5,7 @@ import { NestedTreeControl } from '@angular/cdk/tree';
 import { BehaviorSubject } from 'rxjs';
 import { MyTreeNode } from '../dataServices/environments.service';
 import { PiWebsiteService } from "../piWebsiteService/pi-website.service";
+import { BarDataService } from '../bar/bar-data.service';
 
 
 
@@ -20,7 +21,7 @@ export class EnvironmentTreeComponent{
   dataChange = new BehaviorSubject<MyTreeNode[]>([])
   activeDeviceIDList:number[] = []
 
-  constructor(private environmentService: EnvironmentsService, private pi_websiteService: PiWebsiteService) {
+  constructor(private environmentService: EnvironmentsService, private pi_websiteService: PiWebsiteService, private barDataService:BarDataService) {
     this.environmentService.dataChange.subscribe(data=>{
       this.dataSource.data = data
     })
@@ -72,6 +73,10 @@ export class EnvironmentTreeComponent{
       this.dataSource.data = this.environmentService.dataChange.value
 
     })
+  }
+
+  SelectDevice(device:any){
+    this.barDataService.selectedDevice.next({envID:device.data.id, name:device.data.name})
   }
 
   DeviceChecked(device: any, checked:boolean){

@@ -1,2 +1,22 @@
-
+<mat-toolbar style="height:100px; display:flex; flex-wrap: nowrap;">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate placeholder="Start date" disabled (dateInput)="startDateInput($event.value)">
+        <input matEndDate placeholder="End date" disabled (dateInput)="endDateInput($event.value)">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matIconSuffix [for]="picker" disabled="false"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker disabled="false"></mat-date-range-picker>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Select Data</mat-label>
+      <mat-select (selectionChange)="dataTypeInput($event.value)">
+        <mat-option *ngFor="let data of datas" [value]="data.value">
+          {{data.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  <button mat-raised-button color="primary" (click)="GetData()">View</button>
+  </mat-toolbar>
+  <h1 id="deviceNameHeader" style="padding:10px"></h1>
 <plotly-plot [data]="graph.data" ></plotly-plot>

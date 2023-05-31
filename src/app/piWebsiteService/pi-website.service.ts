@@ -10,7 +10,6 @@ export class PiWebsiteService {
   private dataChanged = new ReplaySubject<string>();
 
   setData(data: string) {
-    console.log("setData")
     this.evn_token = data;
     this.dataChanged.next(data);
   }
