@@ -30,7 +30,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { PiwebsiteComponent } from "./piWebsite/piwebsite.component";
-import { RegisterWindowComponent } from './register-window/register-window.component'
+import { RegisterWindowComponent } from './register-window/register-window.component';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -68,6 +69,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     MatFormFieldModule,
     MatNativeDateModule, 
     MatRippleModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

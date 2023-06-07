@@ -66,6 +66,7 @@ export class EnvironmentsService {
       this.dataChange.next(this.listToTree(this.envArray$))
     })
     this.deviceResponse.subscribe(data=>{
+      console.log(data)
       this.getDevs(data)
       this.dataChange.next(this.listToTree(this.envArray$))
     })
@@ -127,6 +128,7 @@ export class EnvironmentsService {
   {
     data.forEach(d => 
     {
+      //TODO: this cant be a good way of getting unique ids (It does work tho ;)
       var e = Math.floor(Math.random()*1000000000);
       this.envArray$.push({name: d.deviceName,data:{id:d.environmentID,name:d.deviceName} ,id:e ,depth:-1, parentId: d.environmentID,children: [], hasChild:false, isDevice:true,isInput:false,parent:null})
     })

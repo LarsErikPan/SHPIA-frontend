@@ -4,15 +4,15 @@
             
         </app-environment-tree>
     </div>
-    <div class="float-child form-header">
-        <app-data-tool-bar>
-
-        </app-data-tool-bar>
-        <div *ngIf="this.piWindowActive" style="height:100%;">
+    <div class="float-child form-header" id="contentWindow">
+        <ng-template [ngIf]="this.piWindowActive">
             <app-piwebsite>
 
             </app-piwebsite>
-        </div>
-
+        </ng-template>
+        
+        <ng-template [ngIf]="this.barWindowActive">
+            <app-bar></app-bar>
+        </ng-template>
     </div>
 </div>
